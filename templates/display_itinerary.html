@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Travel Itinerary</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='itinerary.css') }}">
+</head>
+<body>
+<header>
+    <nav>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="GLOBETROTTERS Logo">
+        <span>GLOBETROTTERS</span>
+      </div>
+      <div class="nav-links">
+        <a href="/home"><i class="fas fa-home"></i> Home</a>
+        <a href="/submit_feedback"><i class="fas fa-info-circle"></i> Feedback </a>
+        <a href="/logout"><i class="fas fa-envelope"></i> Logout </a>
+      </div>
+    </nav>
+  </header>
+
+    <h1>Your Travel Itinerary</h1>
+    <div class="container">
+        <div class="content">
+            <h2>Basic Itinerary:</h2>
+        {% for sentence in openai_itinerary %}
+            <p>{{ sentence }}</p>
+        {% endfor %}
+            </div>
+
+
+        <div class="claude_content">
+            <h2>Pro Itinerary :</h2>
+            {% if proa %}
+            <p>{{ claude_itinerary | safe  }}</p>
+            {% else %}
+            <p>{{ claude_itinerary | safe  }}</p>
+            <h3><a href="{{ url_for('payment')}}">Click here to be part of pro travellers.</a></h3>
+            {% endif %}
+
+
+     </div>
+    </div>
+<!--    <div class="link">-->
+<!--        <a href="/logout">Logout</a>-->
+<!--    </div>-->
+<!--    <h3><a href="{{ url_for('itinerary') }}">HOMEPAGE</a></h3>-->
+<!--    <h2><a href="{{ url_for('submit_feedback') }}">Kindly provide Your feedback for better future outputs :)</a></h2>-->
+
+
+
+</body>
+</html>

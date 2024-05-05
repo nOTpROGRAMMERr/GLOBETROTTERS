@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Globetrotters</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='about_styles.css') }}">
+</head>
+<body>
+<!-- Navigation -->
+<header>
+  <nav class="container">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Globetrotters Logo">
+      <span>Globetrotters</span>
+    </div>
+    <div class="nav-links">
+      <a href="/home">Home</a>
+
+    </div>
+  </nav>
+</header>
+
+<!-- About Us Section -->
+<div class="container">
+  <h1>About <b>Globetrotters</b></h1>
+  <p>Welcome to <b>Globetrotters</b>, where we share information related to travel itinerary generators. We're dedicated to providing you the very best information and knowledge on the topics mentioned.</p>
+  <p>We hope you find all the information on <b>Globetrotters</b> helpful, as we love sharing them with you.</p>
+  <p>If you require any more information or have any questions about our site, please feel free to contact us by email at <b>contact@Globetrotters.com</b>.</p>
+</div>
+
+<!-- Contact Section -->
+<div class="container">
+  <h1>Contact Us</h1>
+  <form action="submit_form.php" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+  </form>
+</div>
+
+<footer>
+  <p>© 2024 Globetrotters. All rights reserved.</p>
+</footer>
+</body>
+</html>

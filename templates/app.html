@@ -1,0 +1,126 @@
+
+
+<!--<button id="rzp-button1">Pay with Razorpay</button>-->
+<!--<script src="https://checkout.razorpay.com/v1/checkout.js"></script>-->
+<!--<script>-->
+<!--var options = {-->
+<!--    "key": "rzp_test_gqtqoJkzkn1Vj3", // Enter the Key ID generated from the Dashboard-->
+<!--    "amount": "500", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise-->
+<!--    "currency": "INR",-->
+<!--    "name": "GLOBETROTTERS",-->
+<!--    "description": "Test Transaction",-->
+<!--    "image": "{{ url_for('static', filename='logo.jpg') }}",-->
+<!--    "order_id": '{{ data }}', //This is a sample Order ID. Pass the `id` obtained in the response of Step 1-->
+<!--    "handler": function (response){-->
+<!--            console.log(-->
+<!--                {-->
+<!--                    razorpay_payment_id:response.razorpay_payment_id,-->
+<!--                    razorpay_order_id:response.razorpay_order_id,-->
+<!--                    razorpay_signature:response.razorpay_signature-->
+<!--                }-->
+<!--            );-->
+<!--            window.location.replace("/success")-->
+
+<!--    },-->
+<!--    "prefill": {-->
+<!--        "name": "Rish Dias",-->
+<!--        "email": "Rish.Dias@GLOBETRROTERS.com",-->
+<!--        "contact": "9000090000"-->
+<!--    },-->
+<!--    "theme": {-->
+<!--        "color": "#3399cc"-->
+<!--    }-->
+<!--};-->
+<!--var rzp1 = new Razorpay(options);-->
+<!--rzp1.on('payment.failed', function (response){-->
+<!--        alert(response.error.code);-->
+<!--        alert(response.error.description);-->
+<!--        alert(response.error.source);-->
+<!--        alert(response.error.step);-->
+<!--        alert(response.error.reason);-->
+<!--        alert(response.error.metadata.order_id);-->
+<!--        alert(response.error.metadata.payment_id);-->
+<!--});-->
+<!--document.getElementById('rzp-button1').onclick = function(e){-->
+<!--    rzp1.open();-->
+<!--    e.preventDefault();-->
+<!--}-->
+
+<!--rzp1.on('payment.success', function (redirect) {-->
+<!--    window.location.href = "/feed_sukesh.html"; // Redirect to success page-->
+<!--});-->
+<!--</script>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+
+<button id="rzp-button1">Pay with Razorpay</button>
+
+<!-- Include Razorpay checkout.js script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- Razorpay configuration script -->
+<script>
+    var options = {
+        "key": "rzp_test_gqtqoJkzkn1Vj3", // Enter the Key ID generated from the Dashboard
+        "amount": "500", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "GLOBETROTTERS",
+        "description": "Test Transaction",
+        "image": "{{ url_for('static', filename='logo.jpg') }}",
+        "order_id": '{{ data }}', //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "handler": function (response) {
+            console.log(
+                {
+                    razorpay_payment_id: response.razorpay_payment_id,
+                    razorpay_order_id: response.razorpay_order_id,
+                    razorpay_signature: response.razorpay_signature
+                }
+            );
+            window.location.replace("/success");
+        },
+        "prefill": {
+            "name": "Rish Dias",
+            "email": "Rish.Dias@GLOBETRROTERS.com",
+            "contact": "9000090000"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+
+    // Create a new instance of Razorpay
+    var rzp1 = new Razorpay(options);
+
+    // Handle payment failed event
+    rzp1.on('payment.failed', function (response) {
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+    });
+
+    // Open Razorpay payment modal on button click
+    document.getElementById('rzp-button1').onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+    }
+
+    // Redirect to success page on payment success
+    rzp1.on('payment.success', function (redirect) {
+        window.location.href = "/feed_sukesh.html";
+    });
+</script>
+
+</body>
+</html>

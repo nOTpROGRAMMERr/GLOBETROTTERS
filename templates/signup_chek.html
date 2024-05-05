@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+    <script>
+        function checkPasswordStrength(password) {
+    // Define regex patterns for different password strengths
+    var strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+    var mediumRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/;
+
+    // Check the password against the regex patterns
+    if (strongRegex.test(password)) {
+        return 'strong';
+    } else if (mediumRegex.test(password)) {
+        return 'medium';
+    } else {
+        return 'weak';
+    }
+}
+
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var strength = checkPasswordStrength(password);
+
+            // Update the password strength indicator
+            var strengthIndicator = document.getElementById("password-strength");
+            strengthIndicator.className = strength;
+            strengthIndicator.innerHTML = "Password Strength: " + strength.toUpperCase();
+        }
+    </script>
+    <style>
+        .weak { color: red; }
+        .medium { color: orange; }
+        .strong { color: green; }
+    </style>
+</head>
+<body>
+    <h2>Signup Form</h2>
+    <form>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" oninput="validatePassword()"><br><br>
+
+        <div id="password-strength"></div><br>
+
+        <input type="submit" value="Signup">
+    </form>
+</body>
+</html>

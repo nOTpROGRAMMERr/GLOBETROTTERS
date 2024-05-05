@@ -1,0 +1,36 @@
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #66edff, #5ea9ff);
+  color: #d41dea;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+form {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+  color: black;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0056b3;
+}

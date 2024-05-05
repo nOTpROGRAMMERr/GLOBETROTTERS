@@ -1,0 +1,41 @@
+<!-- feedback_form.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='feedback_form.css') }}">
+</head>
+<body>
+ <header>
+    <nav>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="GLOBETROTTERS Logo">
+        <span>GLOBETROTTERS</span>
+      </div>
+      <div class="nav-links">
+        <a href="/home"><i class="fas fa-home"></i> Home</a>
+        <a href="/about"><i class="fas fa-info-circle"></i> About & Contact</a>
+
+      </div>
+    </nav>
+  </header>
+
+    <form id="feedback_form" method="POST" action="{{ url_for('submit_feedback') }}">
+    <label for="feedback">Feedback:</label><br>
+    <textarea id="feedback" name="feedback" rows="4" cols="50" required></textarea><br><br>
+
+    <label for="output_preference">Which output is better?</label><br>
+    <select id="output_preference" name="output_preference" required>
+        <option value="openai">Basic</option>
+        <option value="claude">Pro</option>
+        <option value="both">Both</option>
+    </select><br><br>
+
+    <input type="submit" value="Submit Feedback"><br><br>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+h1{
+    text-align: center;
+    color: slategrey;
+}
+body{
+    background-color:blanchedalmond;
+}
+form{
+     text-align: center;
+}
+button:hover{
+    margin-top: 10px;
+    cursor:pointer;
+    transform: scale(1.2);
+}

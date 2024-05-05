@@ -1,0 +1,94 @@
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #FF6B6B, #56CCF2);
+  color: #1F2833; /* Dark blueish color for text */
+}
+
+h1 {
+  text-align: center;
+  padding: 20px 0;
+  color: #1F2833; /* Dark blueish color for heading */
+}
+
+form {
+  width: 300px;
+  margin: 0 auto;
+  padding: 35px;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1); /* Slightly more prominent shadow */
+  color: #1F2833; /* Dark blueish color for text */
+  border-radius: 15px; /* Slightly reduced border radius */
+}
+
+p {
+  font-size: 16px; /* Slightly reduced font size for paragraphs */
+  line-height: 1.5;
+  color: #1F2833; /* Dark blueish color for text */
+}
+
+.link a {
+  color: #724d4d; /* Reddish color for links */
+  text-decoration: none;
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+  align-items: center;
+
+}
+
+.link a:hover {
+  color: #cccccc;
+}
+@keyframes spinner {
+    to { transform: rotate(360deg); }
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #1F2833;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    animation: spinner 0.6s linear infinite;
+    margin: 20px auto;
+}
+
+  header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 40px;
+    margin-right: 0.5rem;
+  }
+
+  .logo span {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #ff9800;
+  }

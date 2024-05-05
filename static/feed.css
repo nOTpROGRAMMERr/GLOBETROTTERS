@@ -1,0 +1,56 @@
+body {
+    background-image: url(Designer.png); /* Specify the background image */
+    background-size: cover ;/* Cover the entire background */
+    background-position: bottom ; /* Center the background image horizontally and move it to the bottom *!*/
+    /*background-color: rgba(255, 255, 255, 1%); !* Add a background color with reduced opacity *!*/
+}
+
+.container {
+
+    text-align: left; /* Center the content vertically and horizontally */
+    padding: 10px;
+    /*color: #55ff00; !* Text color *!*/
+    background-color: #5ea9ff;
+        color: black;
+
+}
+  header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+      color:black;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 40px;
+    margin-right: 0.5rem;
+  }
+
+  .logo span {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #ff9800;
+  }

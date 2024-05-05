@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Form</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <script>
+        var options = {
+            "key": "{{ RAZORPAY_KEY_ID }}",
+            "amount": {{ order_id }}, // Access order_id from template context
+            "name": "Your Company Name",
+            "description": "Sample Product",
+            "image": "{{ url_for('static', filename='logo.jpg') }}",  # Optional logo
+            "prefill": {
+                "name": "John Doe",
+                "email": "johndoe@example.com"
+            },
+            "theme": {
+                "color": "#3399cc"
+            },
+            "handler": function (response) {
+                if (response.razorpay_payment_id) {
+                    // Handle successful payment here
+                    window.location.href = "/success";
+                } else {
+                    alert("Payment failed!");
+                }
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    </script>
+</body>
+</html>

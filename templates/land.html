@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLOBETROTTERS - Travel Itinerary Generator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='lstyles.css') }}">
+  <script>
+    function redirectToItiPage () {
+      window.location.href = "/itinerary";
+    }
+
+    const images = [
+    'pics/4.jpg',
+    'pics/3.jpg',
+    'pics/2.jpg',
+    'pics/1.jpg'
+  ];
+
+  function preloadImages() {
+    for (const image of images) {
+      const img = new Image();
+      img.src = image;
+    }
+  }
+
+  window.addEventListener('load', preloadImages);
+</script>
+
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="GLOBETROTTERS Logo">
+        <span>GLOBETROTTERS</span>
+      </div>
+      {% if data %}
+      <div class="nav-links">
+        <a href="/home">Home</a>
+        <a href="/about"><i class="fas fa-info-circle"></i> About & Contact</a>
+        <a href="/login">Login</a>
+        <a href="/signup">Sign Up</a>
+      </div>
+      {% else %}
+      <div class="nav-links">
+        <a href="/home">Home</a>
+        <a href="/about"><i class="fas fa-info-circle"></i> About & Contact</a>
+        <a href="/logout">Logout</a>
+        <h3>&nbsp;&nbsp;&nbsp;{{user}}</h3>
+
+        <div class="status">
+          {% if sta== 0 %}
+                <p>&nbsp;&nbsp;(Basic)</p>
+          {% else %}
+                <p>&nbsp;&nbsp;(Pro)</p>
+                {% endif %}
+        </div>
+
+        </div>
+      {% endif %}
+
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+
+      <div class="hero-content animate__animated animate__fadeInUp">
+        <div class="background-images"></div>
+        <h1>Craft Your Perfect Travel Adventure</h1>
+        <p>Introducing our powerful travel itinerary generator, designed to help you plan your dream vacation with ease.</p>
+        <a href="#itineraries" class="btn btn-primary">Get Started</a>
+      </div>
+    </section>
+
+    <section class="itineraries" id="itineraries">
+      <div class="itinerary basic animate__animated animate__fadeInLeft">
+        <h2>Basic Itinerary <span class="free">(Free)</span></h2>
+        <p>Our free basic itinerary is perfect for those who want to hit the road without breaking the bank.</p>
+        <ul>
+          <li>Essential sightseeing recommendations</li>
+          <li>Top attractions and must-see landmarks</li>
+          <li>Curated list of affordable accommodations</li>
+          <li>Suggestions for local eateries and nightlife</li>
+        </ul>
+<!--        <button class="btn btn-secondary">Get Basic Itinerary</button>-->
+        <button class="btn btn-secondary" onclick="redirectToItiPage()">Get Basic Itinerary</button>
+
+      </div>
+
+      <div class="itinerary pro animate__animated animate__fadeInRight">
+        <h2>Pro Itinerary <span class="paid">(Paid)</span></h2>
+        <p>Upgrade to our premium pro itinerary and unlock a world of personalized travel planning.</p>
+        <ul>
+          <li>Detailed day-by-day itinerary with time estimates</li>
+          <li>Insider tips from local experts</li>
+          <li>Off-the-beaten-path experiences</li>
+          <li>Luxury hotel and dining recommendations</li>
+          <li>24/7 concierge support for seamless planning</li>
+        </ul>
+<!--        <button class="btn btn-secondary" onclick="redirectToPaymentPage()">Upgrade to Pro Itinerary</button>-->
+        {% if sta== 0 %}
+        <a href="/payment" class="btn btn-secondary">Upgrade to Pro Itinerary</a>
+        {% else %}
+        <a href="/itinerary" class="btn btn-secondary">Already a pro member,start travelling!!</a>
+        {% endif %}
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonial-slider">
+        <div class="testimonial animate__animated animate__fadeInUp">
+          <blockquote>"I used GLOBETROTTERS to plan my trip to Europe, and it was a game-changer! The pro itinerary was so detailed and helped me make the most of my time."</blockquote>
+          <cite>- Sarah L., San Francisco</cite>
+        </div>
+        <div class="testimonial animate__animated animate__fadeInUp">
+          <blockquote>"As a budget traveler, the basic itinerary was a lifesaver! It allowed me to explore new destinations without breaking the bank."</blockquote>
+          <cite>- John D., New York</cite>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 GLOBETROTTERS. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Itinerary Generator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<!--  <script src="{{ url_for('static', filename='script.js') }}"></script>-->
+  <script>
+    function updateSliderValue(slider, output) {
+        output.innerHTML = slider.value; // Display the initial slider value
+    }
+
+    // Add event listener to the document
+    document.addEventListener('input', function(event) {
+        if (event.target.matches('input[type="range"]')) {
+            var output = event.target.nextElementSibling;
+            updateSliderValue(event.target, output);
+        }
+    });
+
+    // Call updateSliderValue for the initial slider values
+    window.onload = function() {
+        var noAdultsSlider = document.getElementById('no_adults');
+        var noAdultsOutput = document.getElementById('adult_count');
+        updateSliderValue(noAdultsSlider, noAdultsOutput);
+
+        var noChildrenSlider = document.getElementById('no_children');
+        var noChildrenOutput = document.getElementById('children_count');
+        updateSliderValue(noChildrenSlider, noChildrenOutput);
+    };
+</script>
+</head>
+<body onload="updateSliderValue()">
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="GLOBETROTTERS Logo">
+        <span>GLOBETROTTERS</span>
+      </div>
+      <div class="nav-links">
+        <a href="/home"><i class="fas fa-home"></i> Home</a>
+        <a href="/about"><i class="fas fa-info-circle"></i> About & Contact</a>
+
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Travel Itinerary Generator</h1>
+    </section>
+
+    <section class="form-section">
+      <form method="POST">
+        <div class="form-group">
+          <label for="location"><i class="fas fa-map-marker-alt"></i> Destination:</label>
+          <input type="text" id="location" name="location" required>
+        </div>
+
+        <div class="form-group">
+          <label for="from_loc"><i class="fas fa-location-arrow"></i> From:</label>
+          <input type="text" id="from_loc" name="from_loc" required>
+        </div>
+
+        <div class="form-group">
+          <label for="start_date"><i class="fas fa-calendar-alt"></i> Start Date:</label>
+          <input type="date" id="start_date" name="start_date">
+        </div>
+
+        <div class="form-group">
+          <label for="end_date"><i class="fas fa-calendar-alt"></i> End Date:</label>
+          <input type="date" id="end_date" name="end_date">
+        </div>
+
+        <div class="form-group">
+          <label for="cost"><i class="fas fa-money-bill-wave"></i> Budget for your trip:</label>
+          <input type="number" id="cost" name="cost">
+        </div>
+
+        <div class="form-group">
+          <label for="travel_type"><i class="fas fa-users"></i> Type of Travel:</label>
+          <select id="travel_type" name="travel_type"  required>
+            <option value="solo">Solo</option>
+            <option value="family_friends">Family/Friends</option>
+          </select>
+        </div>
+
+        <div id="adults_container" class="form-group hidden">
+          <label for="no_adults"><i class="fas fa-user"></i> Number of Adults:</label>
+          <input type="range" id="no_adults" name="no_adults" min="1" max="10" value="1">
+          <span id="adult_count">1</span>
+        </div>
+
+        <div id="children_container" class="form-group hidden">
+          <label for="no_children"><i class="fas fa-child"></i> Number of Children:</label>
+          <input type="range" id="no_children" name="no_children" min="0" max="10" value="0">
+          <span id="children_count">0</span>
+        </div>
+
+        <div class="form-group">
+          <label for="preferences"><i class="fas fa-star"></i> Additional preferences:</label>
+          <input type="text" id="preferences" name="preferences">
+        </div>
+
+
+
+        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Generate Itinerary</button>
+        <div id="loading_spinner" class="spinner"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="link">
+      <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+    <p>&copy; 2023 GLOBETROTTERS. All rights reserved.</p>
+  </footer>
+</body>
+</html>
