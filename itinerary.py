@@ -24,8 +24,8 @@ def get_db_connection():
     return mysql.connector.connect(**db_config)
 
 
-keyid = 'rzp_test_gqtqoJkzkn1Vj3'
-keySecret = 'QVbIjJ5QTkuG4qw8kD8q9RT2'
+keyid = 'your key'
+keySecret = 'your key'
 import razorpay
 
 # client = razorpay.Client(auth=(keyid, keySecret))
